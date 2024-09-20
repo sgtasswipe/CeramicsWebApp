@@ -1,0 +1,35 @@
+<!-- portfolio-blog.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Blog - Aarhus Ceramics</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <!-- Include your header content here -->
+</header>
+
+<main>
+    <section id="portfolio-blog">
+        <h1>Our Portfolio & Blog</h1>
+        <div class="blog-posts">
+            <article th:each="post : ${blogPosts}" class="blog-post">
+                <img th:src="${post.imageUrl}" th:alt="${post.title}">
+                <h2 th:text="${post.title}"></h2>
+                <p th:text="${#strings.abbreviate(post.content, 200)}"></p>
+                <a th:href="@{/blog/{id}(id=${post.id})}" class="read-more">Read More</a>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <!-- Include your footer content here -->
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

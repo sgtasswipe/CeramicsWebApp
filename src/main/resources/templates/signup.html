@@ -1,0 +1,38 @@
+<!-- course-signup.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceramics Courses - Aarhus Ceramics</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <!-- Include your header content here -->
+</header>
+
+<main>
+    <section id="courses">
+        <h1>Ceramics Courses</h1>
+        <p>Explore our range of ceramics courses and sign up today!</p>
+        <div class="course-list">
+            <div th:each="course : ${courses}" class="course-card">
+                <h2 th:text="${course.name}"></h2>
+                <p th:text="${course.description}"></p>
+                <p>Dates: <span th:text="${#temporals.format(course.startDate, 'dd-MM-yyyy')}"></span> to <span th:text="${#temporals.format(course.endDate, 'dd-MM-yyyy')}"></span></p>
+                <p>Price: DKK <span th:text="${course.price}"></span></p>
+                <p>Available Spots: <span th:text="${course.maxParticipants}"></span></p>
+                <button class="signup-btn" th:data-course-id="${course.id}">Sign Up</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <!-- Include your footer content here -->
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
