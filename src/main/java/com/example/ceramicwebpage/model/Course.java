@@ -78,4 +78,6 @@ public class Course {
     }
 
     private BigDecimal price;
+
+
 }

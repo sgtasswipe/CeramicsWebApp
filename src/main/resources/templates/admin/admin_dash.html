@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Overgaard Keramik</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/admin/products}">Administrer Produkter</a></li>
+            <li><a th:href="@{/admin/courses}">Administrer Kurser</a></li>
+            <li><a th:href="@{/admin/blog}">Administrer Blog</a></li>
+        </ul>
+    </nav>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn">Log ud</button>
+    </form>
+</div>
+</body>
+</html>

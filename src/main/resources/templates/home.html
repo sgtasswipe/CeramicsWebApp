@@ -1,61 +1,87 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarhus Ceramics</title>
+    <title>Overgaard Keramik - Håndlavet Keramik i Aarhus</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header>
-    <h1>Aarhus Ceramics</h1>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<div th:replace="fragments/header :: header"></div>
 
 <main>
-    <section id="hero">
-        <h2>Welcome to Aarhus Ceramics</h2>
-        <p>Discover our handmade ceramic treasures</p>
+    <section id="hero" class="full-width">
+        <div class="container">
+            <h2>Velkommen til Overgaard Keramik</h2>
+            <p>Opdag unikke, håndlavede keramiske kunstværker i hjertet af Aarhus</p>
+            <a href="#featured-products" class="btn">Se vores produkter</a>
+        </div>
     </section>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We are a small, independent ceramics shop located in the heart of Aarhus. Our passion is creating beautiful, handmade pottery that brings warmth and artistry to your home.</p>
+    <section id="about" class="container">
+        <h2>Om Overgaard Keramik</h2>
+        <div class="about-content">
+            <img src="/images/workshop.jpg" alt="Vores værksted" class="about-image">
+            <div class="about-text">
+                <p>Hos Overgaard Keramik skaber vi unikke, håndlavede keramiske kunstværker med passion og omhu. Vores lille værksted i Aarhus er dedikeret til at bringe skønheden i håndlavet keramik til dit hjem.</p>
+                <p>Med over 20 års erfaring kombinerer vi traditionelle teknikker med moderne design for at skabe tidløse stykker, der både er funktionelle og smukke.</p>
+                <a href="/about" class="btn btn-secondary">Læs mere om os</a>
+            </div>
+        </div>
     </section>
 
-    <section id="featured-products">
-        <h2>Featured Products</h2>
+    <section id="featured-products" class="container">
+        <h2>Udvalgte produkter</h2>
         <div class="product-grid">
             <div th:each="product : ${featuredProducts}" class="product-card">
                 <img th:src="${product.imageUrl}" th:alt="${product.name}">
                 <h3 th:text="${product.name}"></h3>
                 <p th:text="${product.description}"></p>
                 <p class="price" th:text="${'DKK ' + product.price}"></p>
+                <a th:href="@{/product/{id}(id=${product.id})}" class="btn btn-small">Se detaljer</a>
+            </div>
+        </div>
+        <a href="/products" class="btn btn-secondary">Se alle produkter</a>
+    </section>
+
+    <section id="workshops" class="full-width">
+        <div class="container">
+            <h2>Keramik Workshops</h2>
+            <p>Udforsk din kreativitet og lær at lave din egen keramik i vores hyggelige workshops.</p>
+            <a href="/courses" class="btn">Se kommende workshops</a>
+        </div>
+    </section>
+
+    <section id="testimonials" class="container">
+        <h2>Det siger vores kunder</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Jeg er så glad for min smukke vase fra Overgaard Keramik. Den er virkelig et unikt stykke håndværk!"</p>
+                <p class="testimonial-author">- Marie L.</p>
+            </div>
+            <div class="testimonial">
+                <p>"Workshoppen var en fantastisk oplevelse. Jeg lærte så meget og fik skabt mit eget krus!"</p>
+                <p class="testimonial-author">- Anders K.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Visit our shop or get in touch:</p>
-        <address>
-            123 Ceramic Street, Aarhus, Denmark<br>
-            Phone: +45 12 34 56 78<br>
-            Email: info@aarhusceramics.dk
-        </address>
+    <section id="instagram-feed" class="container">
+        <h2>Følg os på Instagram</h2>
+        <div class="instagram-grid">
+            <!-- Add Instagram feed here -->
+            <img th:src="@{/images/ceramic1.png}" alt="Instagram post 1">
+            <img th:src="@{/images/ceramic2.png}" alt="Instagram post 1">
+            <img th:src="@{/images/ceramic3.png}" alt="Instagram post 1">
+            <img th:src="@{/images/ceramic4.png}" alt="Instagram post 1">
+
+
+        </div>
+        <a href="https://www.instagram.com/overgaardkeramik" class="btn btn-secondary" target="_blank">Følg os på Instagram</a>
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 Aarhus Ceramics. All rights reserved.</p>
-</footer>
+<div th:replace="fragments/footer :: footer"></div>
 
 <script src="/js/main.js"></script>
 </body>
